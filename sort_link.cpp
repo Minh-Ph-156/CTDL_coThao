@@ -57,7 +57,6 @@ int sort_link(PTR &First){
     if(First == NULL)return 0;
     PTR res;
     Init(res);
-    int min;
     while(First != NULL){
         PTR min_node = First;
         PTR min_bf = NULL;
