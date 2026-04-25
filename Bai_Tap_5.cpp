@@ -313,12 +313,12 @@ int bang_chuc_nang(){
 
 int main(){
     int BCN;
+    char c;
     while(true){
         Clear();
         BCN = bang_chuc_nang();
         
         if(BCN == 1){
-            system("cls");
             PTR_S Head;
             Init_S(Head);
             int chuc_nang_chinh_1;
@@ -328,10 +328,18 @@ int main(){
                 chuc_nang_chinh_1 = menu_chinh();
                 switch(chuc_nang_chinh_1){
                     case 1:
-                    kiem_tra_1 = Insert_S(Head,Fill_in());
+                        do{
+                        kiem_tra_1 = Insert_S(Head,Fill_in());
                         if(kiem_tra_1 == 1) cout << "Nhap thanh cong" << endl; 
                         else cout << "Nhap that bai" << endl;
                         cout << endl;
+                        cout << "Ban muon nhap tiep hay khong (c/k)" << endl;
+                        cin >> c;
+                        if(c == 'k' || c == 'K'){
+                            Traverse_S(Head);
+                            break;
+                            }  
+                    }while(true);
                         Pause();
                     break;
             
@@ -391,9 +399,19 @@ int main(){
                 chuc_nang_chinh_2 = menu_chinh();
                 switch(chuc_nang_chinh_2){
                     case 1:
-                    kiem_tra_2 = Insert_C(Tail,Fill_in());
-                    if(kiem_tra_2 == 1) cout << "Nhap thanh cong" << endl; 
-                    else cout << "Nhap that bai" << endl;
+                    
+                    do{    
+                       kiem_tra_2 = Insert_C(Tail,Fill_in());
+                        if(kiem_tra_2 == 1) cout << "Nhap thanh cong" << endl; 
+                        else cout << "Nhap that bai" << endl;
+                        cout << "Ban muon nhap tiep hay khong (c/k)" << endl;
+                        cin >> c;
+                        if(c == 'k' || c == 'K'){
+                            Traverse_C(Tail);
+                            break;
+                        } 
+                    }while(true);
+                    
                     Pause();    
                 break;
             
