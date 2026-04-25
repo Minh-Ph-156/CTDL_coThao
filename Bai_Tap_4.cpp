@@ -79,14 +79,24 @@ int main(){
                     chucnang = menu_a();
                     switch(chucnang){
                         case 1:
-                        cout << "Nhap n: "; cin >> n;
-                        cout << "Nhap x: "; cin >> x;
+                        cout << "Nhap n (luu y: n > 0): "; cin >> n; cout << endl;
+                        cout << "Nhap x (luu y: x > 0): "; cin >> x; cout << endl;
+                        while(n < 0 || x < 0){
+                            cout << "Gia tri khong hop le. Vui long nhap lai" << endl;
+                            cout << "Nhap n (luu y: n > 0): "; cin >> n; cout << endl;
+                            cout << "Nhap x (luu y: x > 0): "; cin >> x; cout << endl;
+                        }
                         cout << "Ket qua: " << De_Quy_Cau_a(n,x) << endl;
                         break;
 
                         case 2:
-                        cout << "Nhap n: "; cin >> n;
-                        cout << "Nhap x: "; cin >> x;
+                        cout << "Nhap n (luu y: n > 0): "; cin >> n; cout << endl;
+                        cout << "Nhap x (luu y: x > 0): "; cin >> x; cout << endl;
+                        while(n < 0 || x < 0){
+                            cout << "Gia tri khong hop le. Vui long nhap lai" << endl;
+                            cout << "Nhap n (luu y: n > 0): "; cin >> n; cout << endl;
+                            cout << "Nhap x (luu y: x > 0): "; cin >> x; cout << endl;
+                        }
                         cout << "Ket qua: "  << Giai_De_Quy_Cau_a(n,x) << endl;
                         break;
                         
@@ -104,16 +114,28 @@ int main(){
                     chucnang = menu_b();
                     switch(chucnang){
                         case 1:
-                        cout << "Nhap n: "; cin >> n;
-                        cout << "Nhap x: "; cin >> x;
-                        cout << "Nhap y: "; cin >> y;
+                        cout << "Nhap n (luu y: n >= 0): "; cin >> n; cout << endl;
+                        cout << "Nhap x (luu y: x >= 0): "; cin >> x; cout << endl;
+                        cout << "Nhap y (luu y: y >= 0): "; cin >> y; cout << endl;
+                        while(n < 0 || x < 0 || y < 0){
+                            cout << "Gia tri khong hop le. Vui long nhap lai" << endl;
+                            cout << "Nhap n (luu y: n >= 0): "; cin >> n; cout << endl;
+                            cout << "Nhap x (luu y: x >= 0): "; cin >> x; cout << endl;
+                            cout << "Nhap y (luu y: y >= 0): "; cin >> y; cout << endl;
+                        }
                         cout << "Ket qua: "  << De_Quy_Cau_b(n,x,y) << endl;
                         break;
 
                         case 2:
-                        cout << "Nhap n: "; cin >> n;
-                        cout << "Nhap x: "; cin >> x;
-                        cout << "Nhap y: "; cin >> y;
+                        cout << "Nhap n (luu y: n >= 0): "; cin >> n; cout << endl;
+                        cout << "Nhap x (luu y: x >= 0): "; cin >> x; cout << endl;
+                        cout << "Nhap y (luu y: y >= 0): "; cin >> y; cout << endl;
+                        while(n < 0 || x < 0 || y < 0){
+                            cout << "Gia tri khong hop le. Vui long nhap lai" << endl;
+                            cout << "Nhap n (luu y: n >= 0): "; cin >> n; cout << endl;
+                            cout << "Nhap x (luu y: x >= 0): "; cin >> x; cout << endl;
+                            cout << "Nhap y (luu y: y >= 0): "; cin >> y; cout << endl;
+                        }
                         cout << "Ket qua: " << Giai_De_Quy_Cau_b(n,x,y) << endl;
                         break;
                         
