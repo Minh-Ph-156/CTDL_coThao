@@ -165,6 +165,7 @@ int table(){
 int main(){
     int ds;
     ds = table();
+    char c;
     if(ds == 1){
         PTR_S Head;
         Init_S(Head);
@@ -174,9 +175,18 @@ int main(){
             chucnang = menu();
             switch(chucnang){
                 case 1:
+                    do{
                     check = Insert_S(Head,Fill_in());
                     if(check == 1) cout << "Nhap thanh cong" << endl; 
                     else cout << "Nhap that bai" << endl;
+                    cout << "Ban muon nhap tiep hay khong (c/k)" << endl;
+                    cin >> c;
+                    if(c == 'k' || c == 'K'){
+                        Traverse_S(Head);
+                        break;
+                    }  
+                    }while(true);
+                        
                 break;
             
                 case 2:
@@ -194,9 +204,17 @@ int main(){
             chucnang = menu();
             switch(chucnang){
                 case 1:
+                    do{
                     check = Insert_C(Tail,Fill_in());
                     if(check == 1) cout << "Nhap thanh cong" << endl; 
                     else cout << "Nhap that bai" << endl;
+                    cout << "Ban muon nhap tiep hay khong (c/k)" << endl;
+                    cin >> c;
+                    if(c == 'k' || c == 'K'){
+                        Traverse_C(Tail);
+                        break;
+                    }  
+                    }while(true);
                 break;
             
                 case 2:
@@ -215,9 +233,17 @@ int main(){
             chucnang = menu();
             switch(chucnang){
                 case 1:
+                do{
                     check = Insert_D(Head,Tail,Fill_in());
                     if(check == 1) cout << "Nhap thanh cong" << endl; 
                     else cout << "Nhap that bai" << endl;
+                    cout << "Ban muon nhap tiep hay khong (c/k)" << endl;
+                    cin >> c;
+                    if(c == 'k' || c == 'K') {
+                        Traverse_D(Head);
+                        break;
+                    }  
+                    }while(true);
                 break;
             
                 case 2:
