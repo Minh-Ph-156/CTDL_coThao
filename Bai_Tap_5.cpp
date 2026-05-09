@@ -6,7 +6,8 @@ using namespace std;
 
 struct Sinhvien{
     string hoten;
-    string masv;
+    string masv;        // neu string ta so sanh truc tiep 2 chuoi
+                        // con neu la mang char thi ta dung strcmp trong thu vien cstring
     char namsinh[5];
     char lop[4];
 };
@@ -57,13 +58,13 @@ int Insert_S(PTR_S &First, Sinhvien x){
     return 0;
 }
 PTR_S sortedInsert_S(PTR_S p, PTR_S q){
-    if(p == NULL || stoi(q->SV.masv) < stoi(p->SV.masv) ){
+    if(p == NULL || q->SV.masv < p->SV.masv ){ 
         q->next = p;
         p = q;
         return p;
     }
     PTR_S current = p;
-    while(current->next != NULL && stoi(current->next->SV.masv) < stoi(q->SV.masv) ){
+    while(current->next != NULL && current->next->SV.masv < q->SV.masv){
         current = current->next;
     }
     q->next = current->next;
@@ -97,7 +98,7 @@ PTR_S Merge_node(PTR_S p, PTR_S q){
     if(p == NULL) return q;                 
     if(q == NULL) return p;
     
-    if(stoi(p->SV.masv) < stoi(q->SV.masv)){            //gia tri node nao nho hon thi node do la node can gan, node lon hon la node bi gan
+    if(p->SV.masv < q->SV.masv){            //gia tri node nao nho hon thi node do la node can gan, node lon hon la node bi gan
         p->next = Merge_node(p->next,q);
         return p;
     }else{
@@ -162,7 +163,7 @@ PTR_C sortedInsert_C(PTR_C p, PTR_C q){
         return q;
     }
     PTR_C current = p;
-    if(stoi(q->SV.masv) < stoi(p->SV.masv) ){
+    if( q->SV.masv < p->SV.masv ){
         while(current->next != p){
             current = current->next;
         }
@@ -172,7 +173,7 @@ PTR_C sortedInsert_C(PTR_C p, PTR_C q){
         return q;
     }
 
-    while(current->next != p && stoi(current->next->SV.masv) < stoi(q->SV.masv) ){
+    while(current->next != p && current->next->SV.masv < q->SV.masv){
         current = current->next;
     }
 
@@ -239,7 +240,7 @@ PTR_C Merge_node(PTR_C p, PTR_C q){
     if(p == NULL) return q;                 
     if(q == NULL) return p;
     
-    if(stoi(p->SV.masv) < stoi(q->SV.masv)){            //gia tri node nao nho hon thi node do la node can gan, node lon hon la node bi gan
+    if(p->SV.masv < q->SV.masv ){            //gia tri node nao nho hon thi node do la node can gan, node lon hon la node bi gan
         p->next = Merge_node(p->next,q);
         return p;
     }else{
@@ -356,22 +357,32 @@ int main(){
                         do{
                             Clear();
                             chuc_nang_phu_1 = menu_phu();
-                                if(chuc_nang_phu_1 == 1){
-                                    Insertion_sort_S(Head);
-                                    cout << "Sap xep thanh cong" << endl;
+                            if(chuc_nang_phu_1 == 1){
+                                if(Head == NULL){  
+                                    cout << "Danh sach rong" << endl;
                                     Pause();
                                     break;
                                 }
+                            Insertion_sort_S(Head);
+                            cout << "Sap xep thanh cong" << endl;
+                            Pause();
+                            break;
+                            }
                                 
-                                else if(chuc_nang_phu_1 == 2){
-                                    Head = Merge_Sort_S(Head);    
-                                    cout << "Sap xep thanh cong" << endl;
-                                    Pause();
-                                    break;
-                                }
-                                else if(chuc_nang_phu_1 != 0){
-                                    cout << "Khong ton tai chuc nang nay, vui long chon lai1" << endl;
-                                    Pause();
+                        else if(chuc_nang_phu_1 == 2){
+                            if(Head == NULL){
+                            cout << "Danh sach rong" << endl;
+                            Pause();
+                            break;
+                            }
+                            Head = Merge_Sort_S(Head);    
+                            cout << "Sap xep thanh cong" << endl;
+                            Pause();
+                            break;
+                        }
+                        else if(chuc_nang_phu_1 != 0){
+                                cout << "Khong ton tai chuc nang nay, vui long chon lai1" << endl;
+                                Pause();
                                 }
                             } while(chuc_nang_phu_1 != 0);
                         }   
@@ -429,17 +440,29 @@ int main(){
                         Clear();
                         chuc_nang_phu_2 = menu_phu();
                         if(chuc_nang_phu_2 == 1){
-                            Insertion_Sort_C(Tail);
-                            cout << "Sap xep thanh cong" << endl;
+                            if(Tail == NULL){
+                            cout << "Danh sach rong" << endl;
                             Pause();
                             break;
-                        } else if(chuc_nang_phu_2 == 2){
+                            }
+                        Insertion_Sort_C(Tail);
+                        cout << "Sap xep thanh cong" << endl;
+                        Pause();
+                        break;
+                    } else if(chuc_nang_phu_2 == 2){
+                            if(Tail == NULL){
+                                cout << "Danh sach rong" << endl;
+                                Pause();
+                                break;
+                            }
+
                             PTR_C head = Tail->next; 
                             Break_C(head);              // phá vòng
                             head = Merge_Sort_C(head);
                             Make_C(Tail, head); 
                             cout << "Sap xep thanh cong" << endl;
                             Pause();
+
                             break;
                         }else if(chuc_nang_phu_2 != 0){ 
                             cout << "Khong ton tai chuc nang nay, vui long chon lai" << endl;
